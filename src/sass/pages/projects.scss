@@ -1,0 +1,218 @@
+
+.wrapper {
+  @media screen and(min-width: $desktopL){
+    width: 900px;
+    margin: 0 auto;
+    @media screen and(min-height: 750px) {
+      display: flex;
+      align-items: flex-start;
+    }
+  }
+}
+
+.projectSheet {
+  width: 90%;
+  margin: 0 auto;
+  z-index: 100;
+  padding-bottom: 0;
+  @media screen and(min-width: $desktopL) and(min-height: 750px) {
+    max-width: 450px;
+  }
+}
+
+.projectSheet.fixed {
+  @media screen and(min-width: $desktopL) and(min-height: 750px) {
+    position: fixed;
+  }
+}
+
+.projectSheet__title {
+  padding-top: 180px;
+}
+
+.projectSheet__other {
+  width: 100%;
+  position: relative;
+  .projects-preview {
+    top: 70px;
+    width: 31.81vw;
+    height: 31.81vw;
+    @media screen and(min-width: $tablet) {
+      width: 98.99px;
+      height: 98.99px;
+    }
+    @media screen and(min-width: $desktopXL){
+      width: 136.11px;
+      height: 136.11px;
+    }
+  }
+  .projects-preview--1 {
+    left: calc(50% - 22.5vw);
+    @media screen and(min-width: $tablet) {
+      left: calc(50% - 70px);
+    }
+    @media screen and(min-width: $desktopXL){
+      left: calc(50% - 95.5px);
+    }
+  }
+  .projects-preview--3 {
+    left: calc(50% + 22.5vw);
+    @media screen and(min-width: $tablet) {
+      left: calc(50% + 70px);
+    }
+    @media screen and(min-width: $desktopXL){
+      left: calc(50% + 95.5px);
+    }
+  }
+}
+
+.gallery {
+  position: relative;
+  background: $beige4;
+  display: flex;
+  flex-flow: wrap;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  @media screen and(min-width: $tablet) {
+    margin-top: -150px;
+  }
+  @media screen and(min-width: $desktopL) and(min-height: 750px) {
+    margin-top: 0;
+    max-width: 450px;
+  }
+  img {
+    margin: 20px;
+  }
+  .width1 {
+    width: 90%;
+    @media screen and(min-width: $desktopL) and(min-height: 750px) {
+      padding-top: 170px;
+    }
+  }
+  .width2 {
+    width: 55%;
+  }
+  .width3 {
+    width: 30%;
+  }
+}
+
+.projectSheet__link {
+  &:hover {
+    color: $rose;
+  }
+  @include transition($duree: .2s);
+  @media screen and(min-width: $tablet) {
+    &:hover {
+      letter-spacing: 2px;
+    }
+  }
+}
+
+.projectSheet__tag a {
+  @include transition;
+  @media screen and(min-width: $tablet) {
+    &:hover{
+      position: relative;
+      bottom: 2px;
+      padding-bottom: 2px;
+    }
+  }
+}
+
+.projectSheet__info {
+  margin: 20px 0;
+}
+
+// modale
+
+.projectSheet__description__title {
+  display: inline-block;
+}
+
+.projectSheet__description__opening {
+  display: inline-block;
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  border: 1px solid $grey2;
+  background: none;
+  margin-left: 10px;
+  cursor: pointer;
+  position: relative;
+}
+
+.projectSheet__description__bar {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 1px;
+  width: 10px;
+  background: $grey2;
+}
+
+.projectSheet__description__bar--v {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.projectSheet__modal {
+  display: none;
+}
+
+.projectSheet__modal.open {
+  display: block;
+  width: calc(100% - 40px);
+  max-height: 90%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: $beige2;
+  padding: 50px;
+  overflow-y: scroll;
+  z-index: 10000 !important;
+
+  @include boxshadow;
+
+  @media screen and(min-width: $desktop) {
+    width: 75%;
+  }
+
+  @media screen and(min-width: $desktopL) {
+    width: 50%;
+  }
+}
+
+.projectSheet__modal__close {
+  background: none;
+  border: 0;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+
+  cursor: pointer;
+}
+
+.projectSheet__modal__bar {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 1px;
+  background: $burgundy1;
+
+  cursor: pointer;
+}
+
+.projectSheet__modal__bar--h {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.projectSheet__modal__bar--v {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}

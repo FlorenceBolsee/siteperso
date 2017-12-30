@@ -1,0 +1,686 @@
+.nav {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  @include transition;
+  @media screen and (max-width: 639px){
+    width: 100%;
+    top: -100%;
+    &::after {
+      @include css-triangle($color: $beige4, $direction: down, $size: 500px);
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+  @media screen and (min-width: $tablet){
+    top: auto;
+    bottom: -100%;
+    width: 100%;
+  }
+}
+
+.nav.down {
+  animation: navAnimDown .5s forwards;
+}
+
+.nav.up {
+  animation: navAnimUp .5s forwards;
+}
+
+@keyframes navAnimDown {
+  0%{top: -100%;}
+  100%{top: 0;}
+}
+
+@keyframes navAnimUp {
+  0%{top: 0;}
+  100%{top: -100%;}
+}
+
+.nav.main {
+  position: fixed;
+  left: -100%;
+  top: 0;
+  transform: translateX(0);
+  opacity: 1 !important;
+  animation: navMainSlideRight .5s forwards;
+  .nav__links {
+    font-size: 2.2rem;
+    order: 2;
+  }
+  .nav__logo {
+    order: 1;
+    margin-left: 0;
+  }
+  .nav__links--right {
+    margin-left: 30px;
+  }
+  .nav__container {
+    align-items: center;
+    padding: 2rem 11rem 5rem;
+    max-width: 1920px;
+    justify-content: flex-start;
+  }
+}
+
+.navBG {
+  position: fixed;
+  top: -100%;
+  left: -100%;
+  height: 180px;
+  width: 100%;
+  max-width: 1920px;
+  background: url('../img/separator.png') no-repeat;
+  background-size: cover;
+  background-position: left -30px;
+  z-index: 500;
+  display: none;
+}
+
+.nav.main + .navBG {
+  display: block;
+  animation: navMainSlideRight .5s forwards;
+}
+
+.navBG.hide {
+  display: block;
+  top: 0;
+  left: 0;
+  animation: navMainSlideLeft .5s forwards;
+}
+
+@keyframes navMainSlideRight {
+  0%{top: -100%; left: -100%;}
+  80%{top: -50%; left: 0;}
+  100%{top: 0; left: 0;}
+}
+
+@keyframes navMainSlideLeft {
+  0%{top: 0; left: 0;}
+  20%{top: -50%; left: 0;}
+  100%{top: -100%; left: -100%;}
+}
+
+.nav__container, .nav__links {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: center;
+  align-items: flex-end;
+
+}
+
+.nav__links--left {
+  justify-content: flex-end;
+}
+
+.nav__links--right {
+  justify-content: flex-start;
+}
+
+.nav__container {
+  margin: 0 auto;
+  width: 100%;
+  padding: 3rem 0;
+  @media screen and (max-width: 639px){
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    top: 0;
+    z-index: 10;
+  }
+}
+
+.nav__links {
+  list-style-type: none;
+  padding: 0;
+  @media screen and (max-width: 639px){
+    flex-basis: 100%;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    order: 2;
+  }
+}
+
+.nav__link {
+  .link {
+    padding: 3px 3px 0;
+  }
+  @media screen and (max-width: 639px){
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+    a {
+      color: $rose;
+    }
+  }
+  @media screen and (min-width: $tablet){
+    @include transition($duree: .1s);
+    &:hover {
+      transform: translateY(-3px);
+      padding-bottom: 3px;
+    }
+  }
+}
+
+.nav__link + .nav__link {
+  @media screen and (min-width: $tablet) {
+    margin-left: 30px;
+  }
+}
+
+.nav__logo {
+  margin: 0 30px 0;
+  @media screen and (max-width: 639px){
+    order: 1;
+    margin-bottom: 1rem;
+  }
+  @media screen and (max-width: 639px) and (orientation: landscape){
+    height: 80px;
+  }
+}
+
+.nav__img {
+  height: 80px;
+  @media screen and (max-width: 639px) and (orientation: landscape){
+    height: 60px;
+  }
+}
+
+.hero__container {
+  z-index: 150;
+  opacity: 0;
+  width: 90%;
+  max-width: 632px;
+  margin: 0 auto;
+
+  @media screen and (max-width: 639px) and (orientation: landscape){
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  @media screen and(min-width: $tablet) {
+    position: fixed;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    @include transition;
+  }
+}
+
+// burger
+
+.burger {
+  width: 40px;
+  height: 40px;
+  transform: rotate(45deg);
+  background: $rose;
+  position: fixed;
+  left: 3rem;
+  top: 4rem;
+  cursor: pointer;
+  z-index: 1000;
+  @media screen and (min-width: $tablet){
+    display: none;
+  }
+  @media screen and (max-width: 639px) and (orientation: landscape){
+    left: auto;
+    right: 5rem;
+  }
+}
+
+.burger__line {
+  display: block;
+  width: 75%;
+  height: 1px;
+  background: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  @include transition;
+}
+
+.burger__line-top {
+  top: 40%;
+  left: 40%;
+}
+
+.burger__line-bot {
+  top: 60%;
+  left: 60%;
+}
+
+.burger.clicked {
+  animation: animBurger .3s forwards;
+  .burger__line {
+    top: 50%;
+    left: 50%;
+  }
+  .burger__line-top {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  .burger__line-mid {
+    opacity: 0;
+  }
+  .burger__line-bot {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba($burgundy2, .95);
+  opacity: 0;
+  z-index: -100;
+  @include transition;
+}
+
+.burger.clicked + .overlay, .overlay.open {
+  opacity: 1;
+  z-index: 800;
+}
+
+@keyframes animBurger {
+  0%{transform: rotate(45deg);}
+  100%{transform: rotate(495deg);}
+}
+
+// hero anim
+
+.hero {
+  padding: 200px 0;
+  position: relative;
+  background: $beige4;
+  height: 100vh;
+  @media screen and(min-width: $tablet) {
+    padding: 0;
+    height: 1550px;
+  }
+}
+
+.hero__anim {
+  height: auto;
+  width: 100%;
+  @media screen and (max-width: 639px){
+    background: url("../img/header/gif-header25.png");
+    background-size: cover;
+  }
+  @media screen and (max-width: 639px) and (orientation: landscape){
+    width: 60%;
+  }
+}
+
+.hero__title {
+  width: 100%;
+  max-width: 450px;
+  margin-bottom: 20px;
+}
+
+@media screen and (max-width: 639px) and (orientation: landscape){
+  .hero__title {
+    max-width: 300px;
+  }
+}
+
+// déco tuiles
+
+#petale {
+  display: block;
+  width: 133px;
+  height: 37px;
+  position: fixed;
+  top: -37px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2000;
+  @media screen and (min-width: $tablet){
+    width: 266px;
+    height: 74px;
+    top: -74px;
+  }
+}
+
+#petale.animPetale {
+  animation: petaleChute 4s forwards linear;
+  #petale1 {
+    display: block;
+		animation: petaleSwing 2s infinite ease-in-out;
+	}
+  #petale2 {
+    display: block;
+		animation: petaleSwing 2s infinite ease-in-out;
+	}
+}
+
+        #petale1{fill: #c6ebe5;transform:  translate(-4.3px, -0.75px);}#petale2{fill: #828282;transform:  translate(-4.3px, -0.75px);}
+
+	@keyframes petaleSwing {
+		0% {
+			transform: translate(-4.3px, -0.75px) rotate(0deg);
+		}
+		50% {
+			transform: translate(130px, 30px) rotate(-90deg);
+		}
+		100% {
+			transform: translate(-4.3px, -0.75px) rotate(0deg);
+		}
+	}
+
+  @keyframes petaleChute {
+    0% {
+      top: -74px;
+    }
+    100% {
+      top: 100vh;
+    }
+  }
+
+
+
+
+.content__deco {
+  display: block;
+  position: fixed;
+  z-index: 800;
+  @include transition;
+  @media screen and (min-width: $tablet){
+    display: none;
+  }
+  @media screen and (min-width: $desktop){
+    display: block;
+  }
+}
+
+.tile {
+  background: url("../img/tile.png") no-repeat center;
+  background-size: cover;
+  width: 60px;
+  height: 60px;
+  transform-origin: 50% 0%;
+
+  @media screen and (min-width: $desktopL){
+    width: 80px;
+    height: 80px;
+  }
+}
+
+.tile.hover {
+  animation: tileAnim 1.2s;
+}
+
+.content__deco--left {
+  top: -480px;
+  left: 50%;
+  transform: translateX(-50%);
+  @media screen and (max-width: 639px) and (orientation: landscape){
+    top: -430px;
+    left: 0px;
+  }
+  @media screen and (min-width: $tablet){
+    top: -120%;
+    left: -300px;
+    transform: translateX(0);
+  }
+  @media screen and (min-width: $desktopL){
+    left: -400px;
+  }
+  @media screen and (min-width: $desktopXL){
+    left: -300px;
+  }
+}
+
+.content__deco--left.fixed {
+  left: -550px;
+}
+
+.content__deco--right {
+  display: none;
+  @media screen and (min-width: $desktop){
+    display: block;
+    bottom: -100%;
+    right: -300px;
+    transform: translateX(0);
+  }
+  @media screen and (min-width: $desktopL){
+    right: -200px;
+  }
+  @media screen and (min-width: $desktopXL){
+    right: -100px;
+  }
+}
+
+.content__deco--right.fixed {
+  right: -350px;
+}
+
+.line {
+  display: flex;
+  justify-content: center;
+
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  perspective: 600px;
+  @media screen and (min-width: $desktopL){
+    perspective: 900px;
+  }
+}
+
+@keyframes tileAnim {
+  0% {transform: rotateX(0deg); filter: brightness(100%);}
+  25% {transform: rotateX(15deg); filter: brightness(115%);}
+  50% {transform: rotateX(-15deg); filter: brightness(85%);}
+  70% {transform: rotateX(5deg); filter: brightness(105%);}
+  80% {transform: rotateX(-2deg); filter: brightness(98%);}
+  0% {transform: rotateX(0deg); filter: brightness(100%);}
+}
+
+// API instagram
+
+.instagram {
+  position: fixed;
+  top: 20px;
+  right: -90vw;
+
+  padding: 2rem;
+
+  height: auto;
+  background: $beige2;
+
+  z-index: 2000;
+  @include transition($duree : .6s);
+
+  width: 90vw;
+  @media screen and (min-width: $desktop){
+    width: 50vw;
+  }
+  @media screen and (min-width: $desktopL){
+    width: 350px;
+    height: 95vh;
+  }
+}
+
+.instagram__triangle {
+  @include css-triangle($color: $beige2, $direction: left, $size: 40px);
+  top: 100px;
+  left: 0;
+  cursor: pointer;
+  @media screen and (max-width: 639px) and (orientation: landscape){
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+.instagram__bar {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  transform: translateY(-50%);
+
+  height: 2px;
+  width: 15px;
+  background: $beige1;
+
+  @include transition;
+}
+
+.instagram__arrow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) rotate(-90deg);
+  left: 8px;
+
+  height: 11px;
+  width: 22px;
+  @include transition;
+}
+
+.instagram__triangle:hover {
+  @media screen and (min-width: $tablet){
+    .instagram__bar {
+      width: 22px;
+      left: 12px;
+    }
+    .instagram__arrow {
+      left: 4px;
+    }
+  }
+}
+
+.instagram.peak {
+  right: calc(-90vw + 10px) !important;
+  @media screen and (min-width: $desktop){
+    right: calc(-50vw + 10px) !important;
+  }
+  @media screen and (min-width: $desktopL){
+    right: calc(-350px + 10px) !important;
+  }
+}
+
+.instagram__triangle__container {
+  width: 20px;
+  position: relative;
+  @include transition;
+  transform-origin: 100% 50%;
+}
+
+.instagram.open {
+  right: 0 !important;
+  .instagram__triangle__container {
+    transform: rotate(180deg);
+    left: 5px;
+  }
+}
+
+.instagram__wrapper {
+  width: 100%;
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-around;
+}
+
+.instagram__title {
+  width: 100%;
+  margin: 2rem 0;
+  @media screen and (max-width: 639px) and (orientation: landscape){
+    margin: 1rem 0;
+  }
+}
+
+.insta__container {
+  width: calc(50% - 2rem);
+  max-width: 200px;
+  margin-bottom: 2rem;
+  @media screen and (max-width: 639px) and (orientation: landscape){
+    width: calc(25% - 1.5rem);
+  }
+}
+
+.insta__img {
+  width: 100%;
+  @include transition;
+
+  &:hover {
+    @media screen and (min-width: $tablet){
+      filter: brightness(105%);
+      @include boxshadow;
+    }
+  }
+
+  &:hover::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, $grey2, $beige2);
+    opacity: .5;
+    z-index: 1500;
+  }
+}
+
+.insta__text {
+  display: flex;
+  flex-flow: wrap;
+}
+
+// flèche scroll down
+
+.scrolldown {
+  width: 60px;
+  height: 30px;
+  display: block;
+  position: fixed;
+  left: 50%;
+  bottom: 100px;
+  transform: translateX(-50%) rotate(180deg);
+  z-index: 2000;
+
+  animation: scrolldownBounce 1s infinite;
+  @include transition;
+}
+
+.scrolldown.gone {
+  transform: translate(-50%, calc(100% + 100px)) rotate(180deg);
+}
+
+@keyframes scrolldownBounce {
+  0% {bottom: 100px;}
+  50% {bottom: 85px;}
+  100% {bottom: 100px;}
+}
+
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: $burgundy2;
+  z-index: 100000;
+  display: flex;
+}
+
+.loader__gif {
+  margin: auto;
+  width: 50%;
+  max-width: 200px;
+  box-shadow: $burgundy2 0 0 20px 20px;
+}

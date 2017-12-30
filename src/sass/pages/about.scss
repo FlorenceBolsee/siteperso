@@ -1,0 +1,125 @@
+.aboutWrapper {
+  width: 90%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.aboutWrapper__photo {
+  width: 150px;
+  height: 150px;
+  transform: rotate(45deg);
+  position: relative;
+  top: 200px;
+  margin: 0 auto 75px;
+  overflow: hidden;
+
+  @include boxshadow;
+
+  &::after {
+    content: '';
+    width: 212.13px;
+    height: 212.13px;
+    background: url('../img/photoprofil.jpg');
+    background-size: cover;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+  }
+}
+
+.aboutWrapper__title {
+  padding-top: 200px;
+}
+
+.aboutWrapper__subtitle {
+  padding: 10px;
+}
+
+.aboutWrapper__skills {
+  padding-left: 16px;
+  padding-bottom: 0;
+  list-style: none;
+}
+
+.aboutWrapper__skill {
+  padding-bottom: 20px;
+}
+
+.aboutWrapper__link {
+  color: $grey2;
+  @extend .aboutWrapper__skill;
+  &:hover {
+    color: $grey2;
+  }
+  @media screen and (min-width: $tablet){
+    position: relative;
+    @include transition($duree: .1s);
+    &:hover {
+      top: -2px;
+      padding-bottom: 2px;
+      color: $grey2;
+    }
+  }
+}
+
+.aboutWrapper__block {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-between;
+}
+
+.aboutWrapper__column {
+  width: 100%;
+  padding-top: 30px;
+  border-bottom: 1px solid $beige2;
+  @media screen and (min-width: $desktop){
+    width: calc((100% - 25px) / 2);
+  }
+  @media screen and (min-width: $desktopL) {
+    width: calc((100% - 50px) / 3);
+    border: 0;
+  }
+}
+
+.aboutWrapper__text {
+  text-align: left;
+  padding-bottom: 20px;
+}
+
+.aboutWrapper__text--intro {
+  border-bottom: 1px solid $beige2;
+  padding-bottom: 40px;
+  text-align: center;
+}
+
+.aboutWrapper__text--socials {
+  text-align: center;
+}
+
+.aboutWrapper__xp {
+  padding-top: 30px;
+  border-bottom: 1px solid $beige2;
+}
+
+.aboutWrapper__strong {
+  display: block;
+  position: relative;
+  color: $burgundy1;
+  &::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: $beige1;
+    position: absolute;
+    top: 50%;
+    left: -16px;
+    transform: translateY(-50%);
+    border-radius: 50%;
+  }
+}
+
+.aboutWrapper__date {
+  display: block;
+  color: $grey2;
+}

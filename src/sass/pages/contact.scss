@@ -1,0 +1,84 @@
+.contact {
+  width: 90%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.contact__title {
+  margin-bottom: 20px;
+  padding-top: 200px;
+}
+
+label {
+  display: block;
+  padding: 10px;
+  margin: 0;
+}
+
+input, textarea, .contact__btn {
+  width: 100%;
+  border: 0;
+  padding: 10px;
+  background: $beige2;
+  border-bottom: 4px solid $grey2;
+}
+
+input, textarea {
+  opacity: .6;
+  @include transition($target : opacity);
+}
+
+input:focus, textarea:focus {
+  opacity: 1;
+}
+
+.contact__element {
+  margin-top: 15px;
+}
+
+.contact__btn {
+  border: none;
+  background: $beige1;
+  padding: 10px;
+  margin-top: 20px;
+  cursor: pointer;
+  @include transition;
+
+  &:hover {
+    @media screen and (min-width: $tablet){
+      @include boxshadow;
+    }
+  }
+}
+
+.contact__form {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-between;
+  padding-bottom: 100px;
+}
+
+.contact__block {
+  flex-basis: 100%;
+
+  @media screen and(min-width: $desktopL) {
+    flex-basis: calc(50% - 10px);
+  }
+}
+
+.contact__element--textarea {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+  padding-bottom: 15px;
+}
+
+.control-label--textarea {
+  width: 100%;
+}
+
+#text {
+  resize: none;
+  width: 100%;
+  flex-grow: 1;
+}

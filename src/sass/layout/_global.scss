@@ -1,0 +1,313 @@
+html {
+  box-sizing: border-box;
+  background-attachment: fixed;
+  height: 100%;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  background-color: $beige4;
+  height: 100%;
+}
+
+main {
+  background: $beige4;
+}
+
+*:focus, button:focus {
+  outline: 3px solid $orange;
+}
+
+footer {
+  background: $beige4;
+}
+
+// projects
+
+.projects {
+  position: relative;
+  padding-bottom: 100px;
+}
+
+.projects__web, .projects__anim, .projects__illu {
+  position: relative;
+  width: 84.84vw;
+  height: 150vw;
+  margin: 0 auto;
+  @media screen and (max-width: 639px) and (orientation: landscape){
+    height: 110vw;
+  }
+  @media screen and(min-width: $tablet) {
+    width: 91.72vw;
+    height: 50vw;
+  }
+  @media screen and(min-width: $desktopL) {
+    width: 900px;
+    height: 500px;
+  }
+}
+
+.projects__mainTitle {
+  padding-top: 180px;
+}
+
+.projects__subTitle {
+  padding: 40px 0 20px;
+  @media screen and(min-width: $tablet) {
+    padding-bottom: 0;
+  }
+}
+
+.projects-preview {
+  display: flex;
+  width: 40vw;
+  height: 40vw;
+
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  top: 150px;
+  left: calc(50% + 14.14vw);
+  transform: translateX(-50%) rotate(45deg);
+
+  overflow: hidden;
+  @include transition;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: -35%;
+    left: -35%;
+    transform: rotate(-45deg);
+    width: 200%;
+    height: 200%;
+    z-index: -1;
+    will-change: transform;
+    @include transition;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    width: 200%;
+    height: 200%;
+    z-index: 0;
+    background: linear-gradient(to bottom, rgba($grey1, 1), rgba($grey1, 0));
+  }
+
+  @media screen and (max-width: 639px) and (orientation: landscape){
+    width: 30vw;
+    height: 30vw;
+    left: calc(50% + 10.605vw);
+  }
+  @media screen and(min-width: $tablet) {
+    width: 21.61vw;
+    height: 21.61vw;
+    &:hover {
+      @include boxshadow;
+    }
+  }
+  @media screen and(min-width: $desktopL) {
+    width: 212.13px;
+    height: 212.13px;
+  }
+
+}
+
+.projects-preview--1 {
+  left: calc(50% - 14.14vw);
+  &::after {
+    background: url('../img/flower.png');
+    background-size: 100%;
+  }
+  @media screen and (max-width: 639px) and (orientation: landscape){
+    left: calc(50% - 10.605vw);
+  }
+  @media screen and(min-width: $tablet) {
+    left: calc(50% - 30.56vw);
+  }
+  @media screen and(min-width: $desktopL) {
+    left: calc(50% - 300px);
+  }
+}
+
+.projects-preview--2 {
+  top: calc(150px + 28.28vw);
+  &::after {
+    background: url('../img/yoriko.png');
+    background-size: 100%;
+  }
+  &::before {
+    background: linear-gradient(to bottom, rgba($burgundy1, 1), rgba($burgundy1, 0));
+  }
+  @media screen and (max-width: 639px) and (orientation: landscape){
+    top: calc(150px + 21.21vw);
+  }
+  @media screen and(min-width: $tablet) {
+    top: 150px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+  }
+}
+
+.projects-preview--3 {
+  top: calc(150px + 56.56vw);
+  left: calc(50% - 14.14vw);
+  &::after {
+    background: url('../img/catscarf.png');
+    background-size: 100%;
+  }
+  @media screen and (max-width: 639px) and (orientation: landscape){
+    top: calc(150px + 42.42vw);
+    left: calc(50% - 10.605vw);
+  }
+  @media screen and(min-width: $tablet) {
+    top: 150px;
+    left: calc(50% + 30.56vw);
+  }
+  @media screen and(min-width: $desktopL) {
+    left: calc(50% + 300px);
+  }
+}
+
+.projects-preview--4 {
+  &::before {
+    background: linear-gradient(to bottom, rgba($grey2, 1), rgba($grey2, 0));
+  }
+  &::after {
+    background: url('../img/doomtaana-detail.jpg');
+    background-size: 100%;
+  }
+  @media screen and(min-width: $tablet) {
+    left: calc(50% - 30.56vw);
+  }
+  @media screen and(min-width: $desktopL) {
+    left: calc(50% - 300px);
+  }
+}
+
+.projects-preview--5 {
+  top: calc(150px + 28.28vw);
+  left: calc(50% - 14.14vw);
+  &::before {
+    background: linear-gradient(to bottom, rgba($grey1, 1), rgba($grey1, 0));
+  }
+  &::after {
+    background: url('../img/snegurochka2.png');
+    background-size: cover;
+    background-position: center;
+  }
+  @media screen and (max-width: 639px) and (orientation: landscape){
+    top: calc(150px + 21.21vw);
+    left: calc(50% - 10.605vw);
+  }
+  @media screen and(min-width: $tablet) {
+    top: 150px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+  }
+}
+
+.projects-preview--6 {
+  top: calc(150px + 56.56vw);
+  &::before {
+    background: linear-gradient(to bottom, rgba($grey2, .6), rgba($grey2, 0));
+  }
+  &::after {
+    background: url('../img/eurekoi-1.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+  @media screen and (max-width: 639px) and (orientation: landscape){
+    top: calc(150px + 42.42vw);
+  }
+  @media screen and(min-width: $tablet) {
+    top: 150px;
+    left: calc(50% + 30.56vw);
+  }
+  @media screen and(min-width: $desktopL) {
+    left: calc(50% + 300px);
+  }
+}
+
+.projects-preview--7 {
+  left: calc(50% - 14.14vw);
+  &::before {
+    background: linear-gradient(to bottom, rgba($grey2, 1), rgba($grey2, 0));
+  }
+  &::after {
+    background: url('../img/serpent.jpg');
+    background-size: 100%;
+  }
+  @media screen and (max-width: 639px) and (orientation: landscape){
+    left: calc(50% - 10.605vw);
+  }
+  @media screen and(min-width: $tablet) {
+    left: calc(50% - 30.56vw);
+  }
+  @media screen and(min-width: $desktopL) {
+    left: calc(50% - 300px);
+  }
+}
+
+.projects-preview--8 {
+  top: calc(150px + 28.28vw);
+  &::after {
+    background: url('../img/affiche.jpg');
+    background-size: 100%;
+  }
+  &::before {
+    background: linear-gradient(to bottom, rgba($burgundy1, 1), rgba($burgundy1, 0));
+  }
+  @media screen and (max-width: 639px) and (orientation: landscape){
+    top: calc(150px + 21.21vw);
+  }
+  @media screen and(min-width: $tablet) {
+    top: 150px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+  }
+}
+
+.projects-preview--9 {
+  top: calc(150px + 56.56vw);
+  left: calc(50% - 14.14vw);
+  &::after {
+    background: url('../img/paravent.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+  @media screen and (max-width: 639px) and (orientation: landscape){
+    top: calc(150px + 42.42vw);
+    left: calc(50% - 10.605vw);
+  }
+  @media screen and(min-width: $tablet) {
+    top: 150px;
+    left: calc(50% + 30.56vw);
+  }
+  @media screen and(min-width: $desktopL) {
+    left: calc(50% + 300px);
+  }
+}
+
+.projects-preview__title {
+  transform: rotate(-45deg);
+  @media screen and(min-width: $desktopL) {
+    opacity: 0;
+    filter: blur(5px);
+    @include transition;
+  }
+}
+
+.projects-preview:hover .projects-preview__title {
+  @media screen and(min-width: $desktopL) {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
