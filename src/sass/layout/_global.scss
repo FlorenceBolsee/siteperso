@@ -36,7 +36,7 @@ footer {
   width: 84.84vw;
   height: 150vw;
   margin: 0 auto;
-  @media screen and (max-width: 639px) and (orientation: landscape){
+  @media screen and (max-width: $desktop) and (orientation: landscape){
     height: 110vw;
   }
   @media screen and(min-width: $tablet) {
@@ -101,7 +101,7 @@ footer {
     background: linear-gradient(to bottom, rgba($grey1, 1), rgba($grey1, 0));
   }
 
-  @media screen and (max-width: 639px) and (orientation: landscape){
+  @media screen and (max-width: $desktop) and (orientation: landscape){
     width: 30vw;
     height: 30vw;
     left: calc(50% + 10.605vw);
@@ -126,7 +126,7 @@ footer {
     background: url('../img/flower.png');
     background-size: 100%;
   }
-  @media screen and (max-width: 639px) and (orientation: landscape){
+  @media screen and (max-width: $desktop) and (orientation: landscape){
     left: calc(50% - 10.605vw);
   }
   @media screen and(min-width: $tablet) {
@@ -146,7 +146,7 @@ footer {
   &::before {
     background: linear-gradient(to bottom, rgba($burgundy1, 1), rgba($burgundy1, 0));
   }
-  @media screen and (max-width: 639px) and (orientation: landscape){
+  @media screen and (max-width: $desktop) and (orientation: landscape){
     top: calc(150px + 21.21vw);
   }
   @media screen and(min-width: $tablet) {
@@ -163,7 +163,7 @@ footer {
     background: url('../img/catscarf.png');
     background-size: 100%;
   }
-  @media screen and (max-width: 639px) and (orientation: landscape){
+  @media screen and (max-width: $desktop) and (orientation: landscape){
     top: calc(150px + 42.42vw);
     left: calc(50% - 10.605vw);
   }
@@ -203,7 +203,7 @@ footer {
     background-size: cover;
     background-position: center;
   }
-  @media screen and (max-width: 639px) and (orientation: landscape){
+  @media screen and (max-width: $desktop) and (orientation: landscape){
     top: calc(150px + 21.21vw);
     left: calc(50% - 10.605vw);
   }
@@ -224,7 +224,7 @@ footer {
     background-size: cover;
     background-position: center;
   }
-  @media screen and (max-width: 639px) and (orientation: landscape){
+  @media screen and (max-width: $desktop) and (orientation: landscape){
     top: calc(150px + 42.42vw);
   }
   @media screen and(min-width: $tablet) {
@@ -245,7 +245,7 @@ footer {
     background: url('../img/serpent.jpg');
     background-size: 100%;
   }
-  @media screen and (max-width: 639px) and (orientation: landscape){
+  @media screen and (max-width: $desktop) and (orientation: landscape){
     left: calc(50% - 10.605vw);
   }
   @media screen and(min-width: $tablet) {
@@ -265,7 +265,7 @@ footer {
   &::before {
     background: linear-gradient(to bottom, rgba($burgundy1, 1), rgba($burgundy1, 0));
   }
-  @media screen and (max-width: 639px) and (orientation: landscape){
+  @media screen and (max-width: $desktop) and (orientation: landscape){
     top: calc(150px + 21.21vw);
   }
   @media screen and(min-width: $tablet) {
@@ -283,7 +283,7 @@ footer {
     background-size: cover;
     background-position: center;
   }
-  @media screen and (max-width: 639px) and (orientation: landscape){
+  @media screen and (max-width: $desktop) and (orientation: landscape){
     top: calc(150px + 42.42vw);
     left: calc(50% - 10.605vw);
   }

@@ -142,7 +142,7 @@
   list-style-type: none;
   padding: 0;
   @media screen and (max-width: 639px){
-    flex-basis: 100%;
+
     flex-flow: column;
     justify-content: center;
     align-items: center;
@@ -182,14 +182,14 @@
     order: 1;
     margin-bottom: 1rem;
   }
-  @media screen and (max-width: 639px) and (orientation: landscape){
+  @media screen and (max-width: $desktop) and (orientation: landscape){
     height: 80px;
   }
 }
 
 .nav__img {
   height: 80px;
-  @media screen and (max-width: 639px) and (orientation: landscape){
+  @media screen and (max-width: $desktop) and (orientation: landscape){
     height: 60px;
   }
 }
@@ -201,7 +201,7 @@
   max-width: 632px;
   margin: 0 auto;
 
-  @media screen and (max-width: 639px) and (orientation: landscape){
+  @media screen and (max-width: $desktop) and (orientation: landscape){
     position: absolute;
     top: 40%;
     left: 50%;
@@ -231,7 +231,7 @@
   @media screen and (min-width: $tablet){
     display: none;
   }
-  @media screen and (max-width: 639px) and (orientation: landscape){
+  @media screen and (max-width: $desktop) and (orientation: landscape){
     left: auto;
     right: 5rem;
   }
@@ -318,7 +318,7 @@
     background: url("../img/header/gif-header25.png");
     background-size: cover;
   }
-  @media screen and (max-width: 639px) and (orientation: landscape){
+  @media screen and (max-width: $desktop) and (orientation: landscape){
     width: 60%;
   }
 }
@@ -329,7 +329,7 @@
   margin-bottom: 20px;
 }
 
-@media screen and (max-width: 639px) and (orientation: landscape){
+@media screen and (max-width: $desktop) and (orientation: landscape){
   .hero__title {
     max-width: 300px;
   }
@@ -425,7 +425,7 @@
   top: -480px;
   left: 50%;
   transform: translateX(-50%);
-  @media screen and (max-width: 639px) and (orientation: landscape){
+  @media screen and (max-width: $desktop) and (orientation: landscape){
     top: -430px;
     left: 0px;
   }
@@ -519,7 +519,7 @@
   top: 100px;
   left: 0;
   cursor: pointer;
-  @media screen and (max-width: 639px) and (orientation: landscape){
+  @media screen and (max-width: $desktop) and (orientation: landscape){
     top: 50%;
     transform: translateY(-50%);
   }
@@ -597,7 +597,7 @@
 .instagram__title {
   width: 100%;
   margin: 2rem 0;
-  @media screen and (max-width: 639px) and (orientation: landscape){
+  @media screen and (max-width: $desktop) and (orientation: landscape){
     margin: 1rem 0;
   }
 }
@@ -606,7 +606,7 @@
   width: calc(50% - 2rem);
   max-width: 200px;
   margin-bottom: 2rem;
-  @media screen and (max-width: 639px) and (orientation: landscape){
+  @media screen and (max-width: $desktop) and (orientation: landscape){
     width: calc(25% - 1.5rem);
   }
 }
@@ -682,5 +682,8 @@
   margin: auto;
   width: 50%;
   max-width: 200px;
-  box-shadow: $burgundy2 0 0 20px 20px;
+  @media screen and (max-width: $desktop) and (orientation: landscape){
+    height: 75%;
+    width: auto;
+  }
 }

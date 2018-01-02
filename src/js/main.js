@@ -1,6 +1,17 @@
 var windowWidth = $(window).width() + 17;
 var windowHeight = $(window).height();
 var documentHeight = $(document).height() - 140;
+var isMobile = is_mobile();
+
+function is_mobile() {
+  if (/Mobi/i.test(navigator.userAgent) || /Android/i.test(navigator.userAgent)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+console.log(isMobile);
 
 // fix position header
 
@@ -15,7 +26,7 @@ $(document).ready(
     });
     if(heroOffsetTop > windowHeight * 2){
       $(".hero__container").css('top', '-100%');
-      if(windowWidth > 640){
+      if(windowWidth > 640 && !isMobile){
         $(".nav").css('bottom', '100%');
       }
     }
@@ -68,7 +79,7 @@ var instagram = {
     }.bind(this));
   },
   updatePosition: function(ev){
-    if(windowWidth > 640){
+    if(windowWidth > 640 && !ismobile){
       instagram.clientX = ev.pageX / windowWidth;
       if(instagram.clientX > 0.75){
         $(".instagram").addClass("peak");
@@ -138,7 +149,7 @@ var decoTile = {
   anim : function(){
     $(".tile").mouseover(
     	function(){
-        if(windowWidth > 640){
+        if(windowWidth > 640 && !isMobile){
           if($(this).hasClass("hover") === false){
           	var $this = $(this);
           	$this.addClass("hover");
@@ -188,7 +199,7 @@ var scrollAnim = {
     if(this.scrollLevel > 0){
       this.$scrolldown.addClass("gone");
     }
-    if(windowWidth > 640){
+    if(windowWidth > 640 && !isMobile){
       if(this.scrollLevel > 0){
         this.$hero__container.css('top', '45%');
         this.$nav.css('bottom', '0');
@@ -221,7 +232,7 @@ var scrollAnim = {
     }
     if(this.scrollLevel > 600){
       this.$petale.addClass("animPetale");
-      if(windowWidth > 640){
+      if(windowWidth > 640 && !isMobile){
         this.$hero__container.css('top', '-100%');
         this.$nav.css({
           'bottom': '100%',
@@ -230,7 +241,7 @@ var scrollAnim = {
       }
     } else {
       this.$petale.removeClass("animPetale");
-      if(windowWidth > 640){
+      if(windowWidth > 640 && !isMobile){
         this.$hero__container.css('top', '60%');
         this.$hero__container.css('top', '45%');
         this.$nav.css({
@@ -239,9 +250,9 @@ var scrollAnim = {
         });
       }
     }
-    if((this.scrollLevel > this.$hero.height() && windowWidth > 640) || (this.scrollLevel > this.$hero.height() + 400 && windowWidth <= 640) || (this.scrollLevel + windowHeight >= documentHeight)){
+    if((this.scrollLevel > this.$hero.height() && windowWidth > 640 && !isMobile) || (this.scrollLevel > this.$hero.height() + 400 && windowWidth <= 640) || (this.scrollLevel + windowHeight >= documentHeight)){
 
-      if(windowWidth > 640){
+      if(windowWidth > 640 && !isMobile){
         this.$nav.addClass("main");
         this.$navBG.removeClass("hide");
         this.navBGin = true;
@@ -264,7 +275,7 @@ var scrollAnim = {
         this.$deco__right.addClass("fixed");
       }
     } else {
-      if(windowWidth > 640){
+      if(windowWidth > 640 && !isMobile){
         this.$nav.removeClass("main");
         if(this.navBGin === true){
           this.$navBG.addClass("hide");
@@ -318,7 +329,7 @@ var animLogo = {
   },
   init: function(){
     $(".nav__logo").mouseenter(function(){
-      if(this.finished && windowWidth > 640){
+      if(this.finished && windowWidth > 640 && !isMobile){
         this.mainInterval = setInterval(this.animLogo, 50);
         this.gifLogo = 0;
         this.finished = false;
@@ -391,6 +402,11 @@ var smoothScroll = {
         $("html, body").animate({
           scrollTop: 0
         }, 1000);
+        if(isMobile){
+          $(".burger").removeClass("clicked");
+          $(".nav").addClass("up");
+          $(".nav").removeClass("down");
+        }
       }
     );
   }
@@ -419,7 +435,7 @@ function switchPage(href, cb, id){
             $('.loader__gif').attr('src', '');
           });
           var scrollTop;
-          if(windowWidth < 640){
+          if(isMobile){
             scrollTop = $(".hero").height() + 450;
           } else {
             scrollTop = $(".hero").height() + 50;
@@ -427,7 +443,7 @@ function switchPage(href, cb, id){
           $("html").animate({
             scrollTop: scrollTop
           }, 800);
-          if(windowWidth < 640 && $(".burger").hasClass("clicked")){
+          if(isMobile && $(".burger").hasClass("clicked")){
             $(".burger").removeClass("clicked");
             $(".nav").addClass("up");
             $(".nav").removeClass("down");
@@ -453,4 +469,4 @@ window.addEventListener('popstate', function(e) {
 
 window.addEventListener('orientationchange', function() {
   location.reload(forceGet);
-});
+}, false);
