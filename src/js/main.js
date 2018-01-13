@@ -2,6 +2,8 @@ var windowWidth = $(window).width() + 17;
 var windowHeight = $(window).height();
 var documentHeight = $(document).height() - 140;
 var isMobile = is_mobile();
+var scrollTop;
+var navBG = document.getElementById("navBG");
 
 function is_mobile() {
   if (/Mobi/i.test(navigator.userAgent) || /Android/i.test(navigator.userAgent)) {
@@ -10,8 +12,6 @@ function is_mobile() {
     return false;
   }
 }
-
-console.log(isMobile);
 
 // fix position header
 
@@ -79,7 +79,7 @@ var instagram = {
     }.bind(this));
   },
   updatePosition: function(ev){
-    if(windowWidth > 640 && !ismobile){
+    if(windowWidth > 640 && !isMobile){
       instagram.clientX = ev.pageX / windowWidth;
       if(instagram.clientX > 0.75){
         $(".instagram").addClass("peak");
@@ -171,6 +171,7 @@ decoTile.init();
 
 var scrollAnim = {
   $body: $("body"),
+  $html: $("html"),
   $hero: $(".hero"),
   $imgHero: $(".hero__anim"),
   $hero__container: $(".hero__container"),
@@ -194,8 +195,33 @@ var scrollAnim = {
   gifAnim: undefined,
   parallaxWeb: undefined,
   navBGin: false,
+  heroScrolled: false,
+  isBeforeSnap: false,
+  isAfterSnap: false,
   scroll: function(){
     this.scrollLevel = $(window).scrollTop();
+    /*if(this.scrollLevel > 0 && this.scrollLevel < this.$hero.height()){
+      this.isBeforeSnap = true;
+    } else {
+      this.isBeforeSnap = false;
+    }
+    if(this.scrollLevel > this.$hero.height()){
+      this.isAfterSnap = true;
+    } else {
+      this.isAfterSnap = false;
+    }
+    if(this.heroScrolled && this.isBeforeSnap && !this.isAfterSnap){
+      this.$html.animate({
+        scrollTop: this.$hero.height() + 50
+      }, 800);
+    }
+    if(!this.navBGin && !this.isBeforeSnap && this.isAfterSnap){
+      this.$html.animate({
+        scrollTop: 0
+      }, 800, function(){
+        this.heroScrolled = false;
+      });
+    }*/
     if(this.scrollLevel > 0){
       this.$scrolldown.addClass("gone");
     }
@@ -232,6 +258,7 @@ var scrollAnim = {
     }
     if(this.scrollLevel > 600){
       this.$petale.addClass("animPetale");
+      this.heroScrolled = true;
       if(windowWidth > 640 && !isMobile){
         this.$hero__container.css('top', '-100%');
         this.$nav.css({
@@ -241,6 +268,7 @@ var scrollAnim = {
       }
     } else {
       this.$petale.removeClass("animPetale");
+      this.heroScrolled = false;
       if(windowWidth > 640 && !isMobile){
         this.$hero__container.css('top', '60%');
         this.$hero__container.css('top', '45%');
@@ -397,8 +425,7 @@ var smoothScroll = {
   $backtotop: $("a.backtotop"),
   click: function(){
     $("a.backtotop").on('click',
-      function(event) {
-        event.preventDefault();
+      function() {
         $("html, body").animate({
           scrollTop: 0
         }, 1000);
@@ -416,11 +443,23 @@ smoothScroll.click();
 
 // appel ajax
 
+var isHome = false;
+
 $(document).on('click', '.ajax-call', function(e){
+  var url = window.location.href;
+  if($(this).hasClass('backtotop')){
+    isHome = true;
+  } else {
+    isHome = false;
+  }
   e.preventDefault();
-  var href = this.href;
-  var id = this.getAttribute('data-id');
-  switchPage(href, function(){ window.history.pushState({page: href},"", href);}, id);
+  if($(this).hasClass('backtotop') && url.endsWith("index.html")){
+    smoothScroll.click();
+  } else {
+    var href = this.href;
+    var id = this.getAttribute('data-id');
+    switchPage(href, function(){ window.history.pushState({page: href},"", href);}, id);
+  }
 });
 
 function switchPage(href, cb, id){
@@ -434,9 +473,11 @@ function switchPage(href, cb, id){
           $(".loader").delay(1500).fadeOut("fast", function(){
             $('.loader__gif').attr('src', '');
           });
-          var scrollTop;
           if(isMobile){
             scrollTop = $(".hero").height() + 450;
+          } else if(isHome === true){
+            scrollTop = 0;
+            isHome = false;
           } else {
             scrollTop = $(".hero").height() + 50;
           }
@@ -470,3 +511,43 @@ window.addEventListener('popstate', function(e) {
 window.addEventListener('orientationchange', function() {
   location.reload(forceGet);
 }, false);
+
+var petale = document.getElementById("petale");
+
+petale.addEventListener("webkitAnimationStart", function(){
+  if(isMobile){
+    scrollTop = $(".hero").height() + 450;
+  } else {
+    scrollTop = $(".hero").height() + 50;
+  }
+  $("html").animate({
+    scrollTop: scrollTop
+  }, 800);
+});
+
+petale.addEventListener("animationstart", function(){
+  if(isMobile){
+    scrollTop = $(".hero").height() + 450;
+  } else {
+    scrollTop = $(".hero").height() + 50;
+  }
+  $("html").animate({
+    scrollTop: scrollTop
+  }, 800);
+});
+
+navBG.addEventListener("webkitAnimationStart", function(){
+  if($(".navBG").hasClass("hide")){
+    $("html").animate({
+      scrollTop: 0
+    }, 800);
+  }
+});
+
+navBG.addEventListener("animationstart", function(){
+  if($(".navBG").hasClass("hide")){
+    $("html").animate({
+      scrollTop: 0
+    }, 800);
+  }
+});
