@@ -649,7 +649,7 @@
   left: 50%;
   bottom: 100px;
   transform: translateX(-50%) rotate(180deg);
-  z-index: 2000;
+  z-index: 800;
 
   animation: scrolldownBounce 1s infinite;
   @include transition;

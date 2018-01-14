@@ -429,7 +429,7 @@ var smoothScroll = {
         $("html, body").animate({
           scrollTop: 0
         }, 1000);
-        if(isMobile){
+        if(windowWidth < 640 || isMobile){
           $(".burger").removeClass("clicked");
           $(".nav").addClass("up");
           $(".nav").removeClass("down");
@@ -473,7 +473,7 @@ function switchPage(href, cb, id){
           $(".loader").delay(1500).fadeOut("fast", function(){
             $('.loader__gif').attr('src', '');
           });
-          if(isMobile){
+          if(windowWidth < 640 || isMobile){
             scrollTop = $(".hero").height() + 450;
           } else if(isHome === true){
             scrollTop = 0;
@@ -484,7 +484,7 @@ function switchPage(href, cb, id){
           $("html").animate({
             scrollTop: scrollTop
           }, 800);
-          if(isMobile && $(".burger").hasClass("clicked")){
+          if(windowWidth < 640 || isMobile && $(".burger").hasClass("clicked")){
             $(".burger").removeClass("clicked");
             $(".nav").addClass("up");
             $(".nav").removeClass("down");
@@ -515,25 +515,29 @@ window.addEventListener('orientationchange', function() {
 var petale = document.getElementById("petale");
 
 petale.addEventListener("webkitAnimationStart", function(){
-  if(isMobile){
+  if(windowWidth < 640){
     scrollTop = $(".hero").height() + 450;
   } else {
     scrollTop = $(".hero").height() + 50;
   }
-  $("html").animate({
-    scrollTop: scrollTop
-  }, 800);
+  if(!isMobile){
+    $("html").animate({
+      scrollTop: scrollTop
+    }, 800);
+  }
 });
 
 petale.addEventListener("animationstart", function(){
-  if(isMobile){
+  if(windowWidth < 640){
     scrollTop = $(".hero").height() + 450;
   } else {
     scrollTop = $(".hero").height() + 50;
   }
-  $("html").animate({
-    scrollTop: scrollTop
-  }, 800);
+  if(!isMobile){
+    $("html").animate({
+      scrollTop: scrollTop
+    }, 800);
+  }
 });
 
 navBG.addEventListener("webkitAnimationStart", function(){
