@@ -200,28 +200,6 @@ var scrollAnim = {
   isAfterSnap: false,
   scroll: function(){
     this.scrollLevel = $(window).scrollTop();
-    /*if(this.scrollLevel > 0 && this.scrollLevel < this.$hero.height()){
-      this.isBeforeSnap = true;
-    } else {
-      this.isBeforeSnap = false;
-    }
-    if(this.scrollLevel > this.$hero.height()){
-      this.isAfterSnap = true;
-    } else {
-      this.isAfterSnap = false;
-    }
-    if(this.heroScrolled && this.isBeforeSnap && !this.isAfterSnap){
-      this.$html.animate({
-        scrollTop: this.$hero.height() + 50
-      }, 800);
-    }
-    if(!this.navBGin && !this.isBeforeSnap && this.isAfterSnap){
-      this.$html.animate({
-        scrollTop: 0
-      }, 800, function(){
-        this.heroScrolled = false;
-      });
-    }*/
     if(this.scrollLevel > 0){
       this.$scrolldown.addClass("gone");
     }
