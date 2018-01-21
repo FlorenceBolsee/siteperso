@@ -33,35 +33,26 @@
 .projectSheet__other {
   width: 100%;
   position: relative;
+  margin-bottom: -250px;
   .projects-preview {
-    top: 70px;
+    top: 80px;
     width: 31.81vw;
     height: 31.81vw;
     @media screen and(min-width: $tablet) {
       width: 98.99px;
       height: 98.99px;
     }
-    @media screen and(min-width: $desktopXL){
-      width: 136.11px;
-      height: 136.11px;
-    }
   }
-  .projects-preview--1 {
+  .projects-preview:nth-of-type(1) {
     left: calc(50% - 22.5vw);
     @media screen and(min-width: $tablet) {
       left: calc(50% - 70px);
     }
-    @media screen and(min-width: $desktopXL){
-      left: calc(50% - 95.5px);
-    }
   }
-  .projects-preview--3 {
+  .projects-preview:nth-of-type(2) {
     left: calc(50% + 22.5vw);
     @media screen and(min-width: $tablet) {
       left: calc(50% + 70px);
-    }
-    @media screen and(min-width: $desktopXL){
-      left: calc(50% + 95.5px);
     }
   }
 }
@@ -122,7 +113,7 @@
 }
 
 .projectSheet__info {
-  margin: 20px 0;
+  margin: 40px 0;
 }
 
 // modale
@@ -132,15 +123,8 @@
 }
 
 .projectSheet__description__opening {
-  display: inline-block;
-  height: 18px;
-  width: 18px;
-  border-radius: 50%;
-  border: 1px solid $grey2;
-  background: none;
   margin-left: 10px;
   cursor: pointer;
-  position: relative;
 }
 
 .projectSheet__description__bar {
@@ -171,7 +155,6 @@
   transform: translate(-50%, -50%);
   background: $beige2;
   padding: 50px;
-  overflow-y: scroll;
   z-index: 10000 !important;
 
   @include boxshadow;

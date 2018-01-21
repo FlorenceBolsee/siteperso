@@ -105,7 +105,7 @@ a:hover {
   }
 }
 
-.projects__subTitle, .projectSheet__link, .projectSheet__other__title, .aboutWrapper__subtitle, label {
+.projects__subTitle, .projectSheet__other__title, .aboutWrapper__subtitle, label {
   font-family: 'Josefin Sans', sans-serif;
   text-transform: uppercase;
   color: $rose;
@@ -117,7 +117,7 @@ label {
   text-align: center;
 }
 
-.projectSheet__link, .projectSheet__other__title {
+.projectSheet__other__title {
   font-weight: 700;
   @media screen and(min-width: $desktop) {
     font-size: 2rem;
@@ -133,9 +133,6 @@ label {
 .projectSheet__other .projects-preview__title {
   @media screen and(min-width: $tablet) {
     font-size: 1.6rem;
-  }
-  @media screen and(min-width: $desktopXL) {
-    font-size: 2rem;
   }
 }
 
@@ -212,4 +209,14 @@ footer {
   color: $burgundy1;
   letter-spacing: 1px;
   font-weight: 700;
+}
+
+.projectSheet__link {
+  font-weight: 700;
+  color: $rose;
+  font-size: 1.8rem;
+}
+
+.projectSheet__description__opening {
+  font-size: 1.8rem;
 }

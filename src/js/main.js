@@ -267,7 +267,7 @@ var scrollAnim = {
         if(windowHeight > 750){
           this.$projectSheet.addClass("fixed");
           this.$projectSheet.css({
-            'top': '0',
+            'top': '-45px',
             'right': '50%'
           });
           this.$gallery.css('left', '450px');
@@ -313,6 +313,12 @@ var scrollAnim = {
 };
 
 scrollAnim.init();
+
+$(document).ajaxStop(function() {
+  scrollAnim.$projectSheet = $(".projectSheet");
+  scrollAnim.$gallery = $(".gallery");
+  scrollAnim.init();
+});
 
 var animLogo = {
   gifLogo: 0,
@@ -493,12 +499,8 @@ window.addEventListener('orientationchange', function() {
 var petale = document.getElementById("petale");
 
 petale.addEventListener("webkitAnimationStart", function(){
-  if(windowWidth < 640){
-    scrollTop = $(".hero").height() + 450;
-  } else {
-    scrollTop = $(".hero").height() + 50;
-  }
-  if(!isMobile){
+  scrollTop = $(".hero").height() + 50;
+  if(windowWidth > 640 && !isMobile){
     $("html").animate({
       scrollTop: scrollTop
     }, 800);
@@ -506,12 +508,8 @@ petale.addEventListener("webkitAnimationStart", function(){
 });
 
 petale.addEventListener("animationstart", function(){
-  if(windowWidth < 640){
-    scrollTop = $(".hero").height() + 450;
-  } else {
-    scrollTop = $(".hero").height() + 50;
-  }
-  if(!isMobile){
+  scrollTop = $(".hero").height() + 50;
+  if(windowWidth > 640 && !isMobile){
     $("html").animate({
       scrollTop: scrollTop
     }, 800);
@@ -519,7 +517,7 @@ petale.addEventListener("animationstart", function(){
 });
 
 navBG.addEventListener("webkitAnimationStart", function(){
-  if($(".navBG").hasClass("hide")){
+  if($(".navBG").hasClass("hide") && !isMobile && windowWidth > 640){
     $("html").animate({
       scrollTop: 0
     }, 800);
@@ -527,7 +525,7 @@ navBG.addEventListener("webkitAnimationStart", function(){
 });
 
 navBG.addEventListener("animationstart", function(){
-  if($(".navBG").hasClass("hide")){
+  if($(".navBG").hasClass("hide") && !isMobile && windowWidth > 640){
     $("html").animate({
       scrollTop: 0
     }, 800);

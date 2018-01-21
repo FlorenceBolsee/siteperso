@@ -31,7 +31,7 @@ footer {
   padding-bottom: 100px;
 }
 
-.projects__web, .projects__anim, .projects__illu {
+.projects__container {
   position: relative;
   width: 84.84vw;
   height: 150vw;
@@ -120,7 +120,7 @@ footer {
 
 }
 
-.projects-preview--1 {
+.projects-preview:nth-of-type(1) {
   left: calc(50% - 14.14vw);
   &::after {
     background: url('../img/flower.png');
@@ -137,7 +137,7 @@ footer {
   }
 }
 
-.projects-preview--2 {
+.projects-preview:nth-of-type(2) {
   top: calc(150px + 28.28vw);
   &::after {
     background: url('../img/yoriko.png');
@@ -156,132 +156,12 @@ footer {
   }
 }
 
-.projects-preview--3 {
+.projects-preview:nth-of-type(3) {
   top: calc(150px + 56.56vw);
   left: calc(50% - 14.14vw);
   &::after {
     background: url('../img/catscarf.png');
     background-size: 100%;
-  }
-  @media screen and (max-width: $desktop) and (orientation: landscape){
-    top: calc(150px + 42.42vw);
-    left: calc(50% - 10.605vw);
-  }
-  @media screen and(min-width: $tablet) {
-    top: 150px;
-    left: calc(50% + 30.56vw);
-  }
-  @media screen and(min-width: $desktopL) {
-    left: calc(50% + 300px);
-  }
-}
-
-.projects-preview--4 {
-  &::before {
-    background: linear-gradient(to bottom, rgba($grey2, 1), rgba($grey2, 0));
-  }
-  &::after {
-    background: url('../img/doomtaana-detail.jpg');
-    background-size: 100%;
-  }
-  @media screen and(min-width: $tablet) {
-    left: calc(50% - 30.56vw);
-  }
-  @media screen and(min-width: $desktopL) {
-    left: calc(50% - 300px);
-  }
-}
-
-.projects-preview--5 {
-  top: calc(150px + 28.28vw);
-  left: calc(50% - 14.14vw);
-  &::before {
-    background: linear-gradient(to bottom, rgba($grey1, 1), rgba($grey1, 0));
-  }
-  &::after {
-    background: url('../img/snegurochka2.png');
-    background-size: cover;
-    background-position: center;
-  }
-  @media screen and (max-width: $desktop) and (orientation: landscape){
-    top: calc(150px + 21.21vw);
-    left: calc(50% - 10.605vw);
-  }
-  @media screen and(min-width: $tablet) {
-    top: 150px;
-    left: 50%;
-    transform: translateX(-50%) rotate(45deg);
-  }
-}
-
-.projects-preview--6 {
-  top: calc(150px + 56.56vw);
-  &::before {
-    background: linear-gradient(to bottom, rgba($grey2, .6), rgba($grey2, 0));
-  }
-  &::after {
-    background: url('../img/eurekoi-1.jpg');
-    background-size: cover;
-    background-position: center;
-  }
-  @media screen and (max-width: $desktop) and (orientation: landscape){
-    top: calc(150px + 42.42vw);
-  }
-  @media screen and(min-width: $tablet) {
-    top: 150px;
-    left: calc(50% + 30.56vw);
-  }
-  @media screen and(min-width: $desktopL) {
-    left: calc(50% + 300px);
-  }
-}
-
-.projects-preview--7 {
-  left: calc(50% - 14.14vw);
-  &::before {
-    background: linear-gradient(to bottom, rgba($grey2, 1), rgba($grey2, 0));
-  }
-  &::after {
-    background: url('../img/serpent.jpg');
-    background-size: 100%;
-  }
-  @media screen and (max-width: $desktop) and (orientation: landscape){
-    left: calc(50% - 10.605vw);
-  }
-  @media screen and(min-width: $tablet) {
-    left: calc(50% - 30.56vw);
-  }
-  @media screen and(min-width: $desktopL) {
-    left: calc(50% - 300px);
-  }
-}
-
-.projects-preview--8 {
-  top: calc(150px + 28.28vw);
-  &::after {
-    background: url('../img/affiche.jpg');
-    background-size: 100%;
-  }
-  &::before {
-    background: linear-gradient(to bottom, rgba($burgundy1, 1), rgba($burgundy1, 0));
-  }
-  @media screen and (max-width: $desktop) and (orientation: landscape){
-    top: calc(150px + 21.21vw);
-  }
-  @media screen and(min-width: $tablet) {
-    top: 150px;
-    left: 50%;
-    transform: translateX(-50%) rotate(45deg);
-  }
-}
-
-.projects-preview--9 {
-  top: calc(150px + 56.56vw);
-  left: calc(50% - 14.14vw);
-  &::after {
-    background: url('../img/paravent.jpg');
-    background-size: cover;
-    background-position: center;
   }
   @media screen and (max-width: $desktop) and (orientation: landscape){
     top: calc(150px + 42.42vw);
