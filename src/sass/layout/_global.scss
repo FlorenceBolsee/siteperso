@@ -76,29 +76,24 @@ footer {
   overflow: hidden;
   @include transition;
 
-  &::after {
-    content: '';
-    position: absolute;
-    top: -35%;
-    left: -35%;
-    transform: rotate(-45deg);
-    width: 200%;
-    height: 200%;
-    z-index: -1;
-    will-change: transform;
-    @include transition;
+  .projects-preview__bg, .projects-preview__gr {
+      display: block !important;
+      position: absolute !important;
+      top: 50% !important;
+      left: 50% !important;
+      width: 150% !important;
+      transform: translate(-50%, -50%) rotate(-45deg) !important;
+      z-index: 1 !important;
   }
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(-45deg);
-    width: 200%;
-    height: 200%;
-    z-index: 0;
-    background: linear-gradient(to bottom, rgba($grey1, 1), rgba($grey1, 0));
+  .projects-preview__gr {
+      height: 150% !important;
+      background: linear-gradient(to bottom, rgba($grey1, 1), rgba($grey1, 0)) !important;
+      z-index: 2 !important;
+  }
+
+  .projects-preview__title {
+      z-index: 3 !important;
   }
 
   @media screen and (max-width: $desktop) and (orientation: landscape){
@@ -122,10 +117,6 @@ footer {
 
 .projects-preview:nth-of-type(1) {
   left: calc(50% - 14.14vw);
-  &::after {
-    background: url('../img/flower.png');
-    background-size: 100%;
-  }
   @media screen and (max-width: $desktop) and (orientation: landscape){
     left: calc(50% - 10.605vw);
   }
@@ -139,13 +130,6 @@ footer {
 
 .projects-preview:nth-of-type(2) {
   top: calc(150px + 28.28vw);
-  &::after {
-    background: url('../img/yoriko.png');
-    background-size: 100%;
-  }
-  &::before {
-    background: linear-gradient(to bottom, rgba($burgundy1, 1), rgba($burgundy1, 0));
-  }
   @media screen and (max-width: $desktop) and (orientation: landscape){
     top: calc(150px + 21.21vw);
   }
@@ -159,10 +143,6 @@ footer {
 .projects-preview:nth-of-type(3) {
   top: calc(150px + 56.56vw);
   left: calc(50% - 14.14vw);
-  &::after {
-    background: url('../img/catscarf.png');
-    background-size: 100%;
-  }
   @media screen and (max-width: $desktop) and (orientation: landscape){
     top: calc(150px + 42.42vw);
     left: calc(50% - 10.605vw);
