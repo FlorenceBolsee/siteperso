@@ -1,5 +1,6 @@
 .nav {
   display: block;
+  height: auto;
   position: fixed;
   top: 0;
   left: 50%;
@@ -43,11 +44,6 @@
 }
 
 .nav.main {
-  position: fixed;
-  left: -100%;
-  top: 0;
-  transform: translateX(0);
-  opacity: 1 !important;
   animation: navMainSlideRight .5s forwards;
   .nav__links {
     font-size: 2.2rem;
@@ -62,9 +58,12 @@
   }
   .nav__container {
     align-items: center;
-    padding: 2rem 11rem 5rem;
+    padding: 2rem 2rem 5rem;
     max-width: 1920px;
     justify-content: flex-start;
+    @media screen and (min-width: $desktop) {
+      padding: 2rem 11rem 5rem;
+    }
   }
 }
 
@@ -84,25 +83,37 @@
 
 .nav.main + .navBG {
   display: block;
-  animation: navMainSlideRight .5s forwards;
+  animation: navMainSlideRight .3s forwards;
 }
 
 .navBG.hide {
   display: block;
   top: 0;
   left: 0;
-  animation: navMainSlideLeft .5s forwards;
+  animation: navBgSlideLeft .3s forwards;
+}
+
+.nav.headDown {
+  bottom: 100% !important;
 }
 
 @keyframes navMainSlideRight {
-  0%{top: -100%; left: -100%;}
-  80%{top: -50%; left: 0;}
-  100%{top: 0; left: 0;}
+  0%{bottom: 100%; top: auto; left: auto; transform: translateX(-50%);}
+  1%{bottom: auto; top: -100%; left: -100%; transform: translateX(0);}
+  80%{bottom: auto; top: -50%; left: 0; transform: translateX(0);}
+  100%{bottom: auto; top: 0; left: 0; transform: translateX(0);}
 }
 
 @keyframes navMainSlideLeft {
+  0%{bottom: auto; top: 0; left: 0; transform: translateX(0);}
+  20%{bottom: auto; top: -50%; left: 0; transform: translateX(0);}
+  98%{bottom: auto; top: -100%; left: -100%; transform: translateX(0);}
+  100%{bottom: 100%; top: auto; left: auto; transform: translateX(-50%);}
+}
+
+@keyframes navBgSlideLeft {
   0%{top: 0; left: 0;}
-  20%{top: -50%; left: 0;}
+  80%{top: -50%; left: 0;}
   100%{top: -100%; left: -100%;}
 }
 
@@ -212,7 +223,7 @@
     top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
-    @include transition;
+    @include transition($duree : .1s);
   }
 }
 
@@ -398,6 +409,7 @@
     display: none;
   }
   @media screen and (min-width: $desktop){
+    z-index: 1001;
     display: block;
   }
 }

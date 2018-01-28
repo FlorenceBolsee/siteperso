@@ -81,15 +81,21 @@ footer {
       position: absolute !important;
       top: 50% !important;
       left: 50% !important;
-      width: 150% !important;
       transform: translate(-50%, -50%) rotate(-45deg) !important;
       z-index: 1 !important;
   }
 
   .projects-preview__gr {
+      width: 150% !important;
       height: 150% !important;
       background: linear-gradient(to bottom, rgba($grey1, 1), rgba($grey1, 0)) !important;
       z-index: 2 !important;
+  }
+
+  .projects-preview__bg {
+    height: 150%;
+    width: 150%;
+    object-fit: cover;
   }
 
   .projects-preview__title {
@@ -161,7 +167,7 @@ footer {
   @media screen and(min-width: $desktopL) {
     opacity: 0;
     filter: blur(5px);
-    @include transition;
+    -webkit-transition: opacity .3s linear, filter .3s linear;
   }
 }
 

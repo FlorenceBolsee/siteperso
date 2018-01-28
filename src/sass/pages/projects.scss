@@ -14,9 +14,10 @@
   width: 90%;
   margin: 0 auto;
   z-index: 100;
-  padding-bottom: 0;
+  padding-bottom: 50vw;
   @media screen and(min-width: $desktopL) and(min-height: 750px) {
     max-width: 450px;
+    padding-bottom: 0;
   }
 }
 
@@ -33,7 +34,6 @@
 .projectSheet__other {
   width: 100%;
   position: relative;
-  margin-bottom: -250px;
   .projects-preview {
     top: 80px;
     width: 31.81vw;
@@ -63,7 +63,7 @@
   display: flex;
   flex-flow: wrap;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   z-index: 100;
   @media screen and(min-width: $tablet) {
     margin-top: -150px;
@@ -78,7 +78,7 @@
   .width1 {
     width: 90%;
     @media screen and(min-width: $desktopL) and(min-height: 750px) {
-      padding-top: 170px;
+      padding-top: 125px;
     }
   }
   .width2 {

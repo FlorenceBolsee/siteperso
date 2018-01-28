@@ -187,7 +187,7 @@ var scrollAnim = {
   $footer: $("footer"),
   $bgLight: $(".bg--light"),
   $petale: $("#petale"),
-  $scrolldown: $(".scrolldown"),
+  $scrolldown: $(".scrolldown"), // flèche vers le bas
   instagramRight: undefined,
   deco__leftTop: undefined,
   deco__rightBottom: undefined,
@@ -237,40 +237,18 @@ var scrollAnim = {
     if(this.scrollLevel > 600){
       this.$petale.addClass("animPetale");
       this.heroScrolled = true;
-      if(windowWidth > 640 && !isMobile){
-        this.$hero__container.css('top', '-100%');
-        this.$nav.css({
-          'bottom': '100%',
-          'opacity': '0'
-        });
-      }
-    } else {
-      this.$petale.removeClass("animPetale");
-      this.heroScrolled = false;
-      if(windowWidth > 640 && !isMobile){
-        this.$hero__container.css('top', '60%');
-        this.$hero__container.css('top', '45%');
-        this.$nav.css({
-          'bottom': '0',
-          'opacity': '1'
-        });
-      }
-    }
-    if((this.scrollLevel > this.$hero.height() && windowWidth > 640 && !isMobile) || (this.scrollLevel > this.$hero.height() + 400 && windowWidth <= 640) || (this.scrollLevel + windowHeight >= documentHeight)){
-
-      if(windowWidth > 640 && !isMobile){
-        this.$nav.addClass("main");
-        this.$navBG.removeClass("hide");
-        this.navBGin = true;
-      }
       if(windowWidth > 1080){
         if(windowHeight > 750){
+          console.log(-this.$projectSheet.height());
           this.$projectSheet.addClass("fixed");
           this.$projectSheet.css({
             'top': '-45px',
             'right': '50%'
           });
-          this.$gallery.css('left', '450px');
+          this.$gallery.css({
+            'left': '450px',
+            'min-height': windowHeight
+          });
         }
         this.$footer.css({
           'left': '-200px',
@@ -280,14 +258,13 @@ var scrollAnim = {
         this.$deco__left.addClass("fixed");
         this.$deco__right.addClass("fixed");
       }
-    } else {
       if(windowWidth > 640 && !isMobile){
-        this.$nav.removeClass("main");
-        if(this.navBGin === true){
-          this.$navBG.addClass("hide");
-          this.navBGin = false;
-        }
+        this.$nav.addClass("headDown");
+        this.$hero__container.css('top', '-100%');
       }
+    } else {
+      this.$petale.removeClass("animPetale");
+      this.heroScrolled = false;
       if(windowWidth > 1080){
         if(windowHeight > 750){
           this.$projectSheet.removeClass("fixed");
@@ -295,7 +272,10 @@ var scrollAnim = {
             'top': 0,
             'right': 0
           });
-          this.$gallery.css('left', 'auto');
+          this.$gallery.css({
+            'left': 'auto',
+            'min-height': 'auto'
+          });
         }
         this.$footer.css({
           'left': '-450px',
@@ -304,6 +284,26 @@ var scrollAnim = {
         this.$bgLight.css('display', 'none');
         this.$deco__left.removeClass("fixed");
         this.$deco__right.removeClass("fixed");
+      }
+      if(windowWidth > 640 && !isMobile){
+        this.$nav.removeClass("headDown");
+        this.$hero__container.css('top', '60%');
+        this.$hero__container.css('top', '45%');
+      }
+    }
+    if(this.scrollLevel >= this.$hero.height() + 50 || this.scrollLevel + windowHeight > documentHeight - 100){
+      if(windowWidth > 640 && !isMobile){
+        this.$nav.addClass("main");
+        this.$navBG.removeClass("hide");
+        this.navBGin = true;
+      }
+    } else {
+      if(windowWidth > 640 && !isMobile){
+        this.$nav.removeClass("main");
+        if(this.navBGin === true){
+          this.$navBG.addClass("hide");
+          this.navBGin = false;
+        }
       }
     }
   },
@@ -403,28 +403,6 @@ var modal = {
 
 modal.init();
 
-// smooth scroll
-
-var smoothScroll = {
-  $backtotop: $("a.backtotop"),
-  click: function(){
-    $("a.backtotop").on('click',
-      function() {
-        $("html, body").animate({
-          scrollTop: 0
-        }, 1000);
-        if(windowWidth < 640 || isMobile){
-          $(".burger").removeClass("clicked");
-          $(".nav").addClass("up");
-          $(".nav").removeClass("down");
-        }
-      }
-    );
-  }
-};
-
-smoothScroll.click();
-
 // appel ajax
 
 var isHome = false;
@@ -437,13 +415,9 @@ $(document).on('click', '.ajax-call', function(e){
     isHome = false;
   }
   e.preventDefault();
-  if($(this).hasClass('backtotop') && url.endsWith("index.html")){
-    smoothScroll.click();
-  } else {
-    var href = this.href;
-    var id = this.getAttribute('data-id');
-    switchPage(href, function(){ window.history.pushState({page: href},"", href);}, id);
-  }
+  var href = this.href;
+  var id = this.getAttribute('data-id');
+  switchPage(href, function(){ window.history.pushState({page: href},"", href);}, id);
 });
 
 function switchPage(href, cb, id){
